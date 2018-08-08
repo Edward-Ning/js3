@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="name" type="text">
+<button id="submit-btn">Submit</button>
+<script>
+
+    var a = document.getElementById('name');
+    var b = document.getElementById('submit-btn');
+
+    b.addEventListener('click',view);
+    function view() {
+        console.log(a.value)
+    }
+
+    window.onkeydown = function (event) {
+        var onkey =event;
+        if (onkey.keyCode == 13){
+            view();
+        }else if (onkey.keyCode == 27) {
+            a.value = '';
+        }
+    }
+</script>
+</body>
+</html>
