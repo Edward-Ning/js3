@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .erik{
+            margin-bottom: 200px;
+            width: 487px;
+            height: 481px;
+            background-image: url("erik.jpg");
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="erik" id="smile"></div>
+<input type="button" id="btn" value="开始笑"/>
+<script>
+
+    var smile = document.getElementById('smile');
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click',startSmile);
+    smile.style.backgroundPositionY = 0;
+    function startSmile() {
+        if (parseInt(smile.style.backgroundPositionY) >= -7200) {
+            smile.style.backgroundPositionY = parseInt(smile.style.backgroundPositionY) - 480 + 'px';
+            setTimeout('startSmile()', 100);
+        }else {
+            smile.style.backgroundPositionY = 0;
+            startSmile();
+        }
+    }
+</script>
+</body>
+</html>
