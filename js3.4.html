@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变图片透明度</title>
+</head>
+<body>
+<div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+<button id="fade-btn">淡出</button>
+<script>
+    
+    var fade_obj = document.getElementById('fade-obj');
+    var fade_btn = document.getElementById('fade-btn');
+    fade_obj.style.opacity = 1;
+    fade_btn.addEventListener('click',changeOpacity);
+    function lowerColor() {
+        fade_btn.disabled = true;
+        fade_obj.style.opacity = fade_obj.style.opacity - 0.05;
+        if (fade_obj.style.opacity == 0 ){
+            fade_btn.disabled = false;
+            fade_btn.innerHTML = '淡入';
+            clearTimeout(setTimeout);
+        }else {
+            setTimeout('lowerColor()',40)
+        }
+    }
+    function higherColor() {
+        fade_btn.disabled = true;
+        fade_obj.style.opacity = Number(fade_obj.style.opacity) + 0.05;
+        if (fade_obj.style.opacity == 1 ){
+            fade_btn.disabled = false;
+            fade_btn.innerHTML = '淡出';
+            clearTimeout(setTimeout);
+        }else {
+            setTimeout('higherColor()',40);
+        }
+    }
+    function changeOpacity() {
+        if (fade_obj.style.opacity == 1) {
+            lowerColor();
+        }else if (fade_obj.style.opacity == 0){
+            higherColor();
+        }
+    }
+    
+</script>
+</body>
+</html>
