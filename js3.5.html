@@ -24,12 +24,22 @@
 
     btn.addEventListener('click',startSmile);
     smile.style.backgroundPositionY = 0;
+
     function startSmile() {
         if (parseInt(smile.style.backgroundPositionY) >= -7200) {
             smile.style.backgroundPositionY = parseInt(smile.style.backgroundPositionY) - 480 + 'px';
             setTimeout('startSmile()', 100);
-        }else {
-            smile.style.backgroundPositionY = 0;
+        }else{
+            clearTimeout(setTimeout);
+            backSmile();
+        }
+    }
+    function backSmile() {
+        if (parseInt(smile.style.backgroundPositionY) < -480) {
+            smile.style.backgroundPositionY = parseInt(smile.style.backgroundPositionY) + 480 + 'px';
+            setTimeout('backSmile()', 100);
+        }else{
+            clearTimeout(setTimeout);
             startSmile();
         }
     }
