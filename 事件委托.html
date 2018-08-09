@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>事件委托例子</title>
+    <script>
+        /*window.onload = function(){
+            var oUl = document.getElementById("ul1");
+            var aLi = oUl.getElementsByTagName('li');
+            for(var i=0;i&lt;aLi.length;i++){
+                aLi[i].onclick = function(){
+                    alert(this.id);
+                }
+            }
+        };*/
+        /*window.onload = function(){
+            var oUl = document.getElementById("ul1");
+            oUl.onclick = function(){
+                alert(this.id);
+            }
+        }*/
+        /*window.onload = function(){
+            var oUl = document.getElementById("ul1");
+            oUl.onclick = function(ev){
+                var ev = ev || window.event;
+                var target = ev.target || ev.srcElement;
+                if(target.nodeName.toLowerCase() == 'li'){
+                    alert(123);
+                    alert(target.innerHTML);
+                }
+            }
+        }*/
+        /*window.onload = function(){
+            var oBox = document.getElementById('box');
+            oBox.onclick = function (ev) {
+                var ev = ev || window.event;
+                var target = ev.target || ev.srcElement;
+                if (target.nodeName.toLowerCase() == 'input'){
+                    switch (target.id){
+                        case 'add':
+                            alert('add');
+                            break;
+                        case 'remove':
+                            alert('remove');
+                            break;
+                        case 'move':
+                            alert('move');
+                            break;
+                        case 'select':
+                            alert('select');
+                            break;
+                    }
+                }
+            }
+
+        }*/
+        window.onload = function(){
+            var oBtn = document.getElementById("btn");
+            var oUl = document.getElementById("ul1");
+            var aLi = oUl.getElementsByTagName('li');
+            var num = 4;
+
+            //事件委托，添加的子元素也有事件
+            oUl.onmouseover = function(ev){
+                var ev = ev || window.event;
+                var target = ev.target || ev.srcElement;
+                if(target.nodeName.toLowerCase() == 'li'){
+                    target.style.background = "red";
+                }
+
+            };
+            oUl.onmouseout = function(ev){
+                var ev = ev || window.event;
+                var target = ev.target || ev.srcElement;
+                if(target.nodeName.toLowerCase() == 'li'){
+                    target.style.background = "#fff";
+                }
+
+            };
+
+            //添加新节点
+            oBtn.onclick = function(){
+                num++;
+                var oLi = document.createElement('li');
+                oLi.innerHTML = 111*num;
+                oUl.appendChild(oLi);
+            };
+        }
+    </script>
+</head>
+<body>
+<input type="button" id="btn" name="" value="添加"/>
+<ul id="ul1">
+    <li id="111">111</li>
+    <li id="222">222</li>
+    <li id="333">333</li>
+    <li id="444">444</li>
+</ul>
+<!--<div id="box">
+    <input type="button" id="add" value="添加" />
+    <input type="button" id="remove" value="删除" />
+    <input type="button" id="move" value="移动" />
+    <input type="button" id="select" value="选择" />
+</div>-->
+</body>
+</html>
